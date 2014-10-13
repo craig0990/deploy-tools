@@ -28,8 +28,7 @@ SQL_CLEANUP_SINGLE_BLOG = """
 ALTER TABLE wp_users ADD spam tinyint(2) default 0;
 ALTER TABLE wp_users ADD deleted tinyint(2) default 0;
 UPDATE wp_usermeta SET meta_key = 'wp_%(new_blog_id)s_user_level' WHERE meta_key = 'wp_user_level';
-UPDATE wp_usermeta SET meta_key = 'wp_%(new_blog_id)s_capabilities' WHERE meta_key = 'wp_capabilities';
-UPDATE wp_posts SET post_content = replace(post_content, 'wp-content/uploads/', 'wp-content/blogs.dir/%(new_blog_id)s/files/');"""
+UPDATE wp_usermeta SET meta_key = 'wp_%(new_blog_id)s_capabilities' WHERE meta_key = 'wp_capabilities';"""
 
 def single_to_multisite_migration(name=None, new_blog_id=None, ftp_host=None, ftp_user=None, ftp_pass=None):
     """
